@@ -1,0 +1,32 @@
+.details {
+  margin: 50px;
+  width: 80%;
+  display: flex;
+  font-family: "roboto";
+  justify-content: space-around;
+
+  &__image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &__info {
+    padding: 0 10px;
+  }
+
+  &__text {
+    padding: 5px;
+    border: 1px solid gray;
+  }
+}

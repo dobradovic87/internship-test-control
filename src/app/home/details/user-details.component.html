@@ -1,0 +1,68 @@
+<div>
+  <h2>User details</h2>
+  <div class="details">
+    <div class="details__img">
+      <img
+        *ngIf="user.gender === 'male'"
+        src="./assets/img/male-profile.jpg"
+        alt="profilna slika"
+        width="400"
+        height="400"
+      />
+      <img
+        *ngIf="user.gender === 'female'"
+        src="./assets/img/female-profile.jpg"
+        alt="profilna slika"
+        width="400"
+        height="400"
+      />
+      <div class="button">
+        <button (click)="goToHomepage()" class="button--blue">
+          Back to Home
+        </button>
+        <button (click)="goBack()" class="button--blue">
+          Back to previous
+        </button>
+      </div>
+    </div>
+    <div class="details__info">
+      <p><b>Profile info</b></p>
+      <p>Name: {{ user.firstName }} {{ user.surname }}</p>
+      <p>Age: {{ user.age }}</p>
+      <p>Gender: {{ user.gender }}</p>
+    </div>
+    <div class="details__info">
+      <p><b>Direct friends</b></p>
+      <div
+        class="details__link details__text"
+        (click)="goToAnotherUser(friend.id)"
+        *ngFor="let friend of userDirectFriends"
+      >
+        <span>{{ friend.firstName }} {{ friend.surname }}</span>
+      </div>
+    </div>
+    <div class="details__info">
+      <p><b>Friends of friends</b></p>
+      <div
+        (click)="goToAnotherUser(friend.id)"
+        class="details__link details__text"
+        *ngFor="let friend of friendsOfFriends"
+      >
+        <span>{{ friend.firstName }} {{ friend.surname }}</span>
+      </div>
+    </div>
+    <div class="details__info">
+      <p><b>Suggested friends</b></p>
+      <div *ngIf="suggestedFriends.length > 0">
+        <div
+          (click)="goToAnotherUser(friend.id)"
+          class="details__link details__text"
+          *ngFor="let friend of suggestedFriends"
+        >
+          <span>{{ friend.firstName }} {{ friend.surname }}</span>
+        </div>
+      </div>
+      <div *ngIf="suggestedFriends.length === 0">No suggested friends</div>
+    </div>
+  </div>
+</div>
